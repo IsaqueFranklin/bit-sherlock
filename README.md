@@ -3,12 +3,7 @@
 # SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 
-[![CI](https://github.com/symbolicsoft/verifpal/actions/workflows/main.yml/badge.svg)](https://github.com/symbolicsoft/verifpal/actions/workflows/main.yml)
-
-# [Verifpal](https://verifpal.com)
-
-## What is Verifpal?
-<img src="https://verifpal.com/res/img/png/pose1.png" alt="" align="left" height="300" style="margin:10px" />
+## BitSherlock
 
 Verifpal is new software for verifying the security of cryptographic protocols. Building upon contemporary research in symbolic formal verification, Verifpal’s main aim is to appeal more to real-world practitioners, students and engineers without sacrificing comprehensive formal verification features.
 
