@@ -1,0 +1,70 @@
+attacker[active]
+
+principal bob[
+  knows private skb
+  Pkb = G^skb
+  generates nb1, nb2
+  Nb1 = G^nb1
+  Nb2 = G^nb2
+]
+
+bob -> alice: Nb1, Nb2, Pkb
+bob -> carol: Nb1, Nb2, Pkb
+
+principal alice[
+  knows private ska
+  Pka = G^ska
+  generates na1, na2
+  Na1 = G^na1
+  Na2 = G^na2
+]
+
+alice -> bob: Na1, Na2, Pka
+alice -> carol: Na1, Na2, Pka
+
+principal carol[
+  knows private skc
+  Pkc = G^skc
+  generates nc1, nc2
+  Nc1 = G^nc1
+  Nc2 = G^nc2
+]
+
+carol -> bob: Nc1, Nc2, Pkc
+carol -> alice: Nc1, Nc2, Pkc
+
+principal bob[
+  aggb = Pka + Pkb + Pkc
+  b = Nc1 + Nc2 + Na1 + Na2 + Nb1 + Nb2
+  Rb = Nb1 + b*Nb2
+]
+
+bob -> alice: Rb
+bob -> carol: Rb
+
+principal alice[
+  agga = Pka + Pkb + Pkc
+  b = Nc1 + Nc2 + Na1 + Na2 + Nb1 + Nb2
+  Ra = Na1 + b*Na2
+]
+
+alice -> bob: Ra
+alice -> carol: Ra
+
+principal carol[
+  aggc = Pka + Pkb + Pkc
+  b = Nc1 + Nc2 + Na1 + Na2 + Nb1 + Nb2
+  Rc = Nc1 + b*Nc2
+]
+
+carol -> alice: Rc
+carol -> bob: Rc
+
+queries [
+  authentication? alice -> bob: Ra
+  authentication? alice -> carol: Ra
+  authentication? bob -> alice: Rb
+  authentication? bob -> carol: Rb
+  authentication? carol -> alice: Rc
+  authentication? carol -> bob: Rc
+]
